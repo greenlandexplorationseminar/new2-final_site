@@ -6,6 +6,51 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<!-- Leaflet CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+		
+		<style>
+			#map-container {
+				width: 100%;
+				height: 600px;
+				margin: 2em 0;
+				position: relative;
+				background: #1a1a1a;
+			}
+			#map {
+				width: 100%;
+				height: 100%;
+			}
+			.layer-control {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				z-index: 1000;
+				background: white;
+				padding: 10px;
+				border-radius: 4px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			}
+			.layer-control button {
+				display: block;
+				width: 100%;
+				padding: 8px 12px;
+				margin: 4px 0;
+				border: none;
+				background: #f4f4f4;
+				cursor: pointer;
+				border-radius: 3px;
+				font-size: 14px;
+			}
+			.layer-control button:hover {
+				background: #e0e0e0;
+			}
+			.layer-control button.active {
+				background: #4a90e2;
+				color: white;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -46,6 +91,21 @@
 
 				<!-- Main -->
 					<div id="main">
+
+						<!-- Interactive Map Section -->
+						<section id="map-section">
+							<header class="major" style="text-align: center;">
+								<h2>Greenland Landslides Explorer</h2>
+								<p>Interactive map of historic landslides, impacts, and ongoing monitoring across Greenland</p>
+							</header>
+							<div id="map-container">
+								<div class="layer-control">
+									<button id="street-view" class="active">Street View</button>
+									<button id="satellite-view">Satellite View</button>
+								</div>
+								<div id="map"></div>
+							</div>
+						</section>
 
 						<!-- Featured Post -->
 							<article class="post featured">
@@ -177,6 +237,56 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- Leaflet JS -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+			
+			<script>
+				// Initialize map centered on Greenland with EPSG:3857 (Web Mercator)
+				var map = L.map('map', {
+					center: [72, -42],
+					zoom: 4,
+					minZoom: 3,
+					maxZoom: 18
+				});
+
+				// Base layers
+				var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '© OpenStreetMap contributors',
+					maxZoom: 19
+				});
+
+				var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+					attribution: 'Tiles © Esri',
+					maxZoom: 19
+				});
+
+				// Add default layer
+				streetLayer.addTo(map);
+
+				// Layer switching
+				var currentLayer = 'street';
+				
+				document.getElementById('street-view').addEventListener('click', function() {
+					if (currentLayer !== 'street') {
+						map.removeLayer(satelliteLayer);
+						map.addLayer(streetLayer);
+						currentLayer = 'street';
+						this.classList.add('active');
+						document.getElementById('satellite-view').classList.remove('active');
+					}
+				});
+
+				document.getElementById('satellite-view').addEventListener('click', function() {
+					if (currentLayer !== 'satellite') {
+						map.removeLayer(streetLayer);
+						map.addLayer(satelliteLayer);
+						currentLayer = 'satellite';
+						this.classList.add('active');
+						document.getElementById('street-view').classList.remove('active');
+					}
+				});
+			</script>
 
 	</body>
 </html>
