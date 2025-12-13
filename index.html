@@ -50,6 +50,55 @@
 				background: #4a90e2;
 				color: white;
 			}
+			/* Custom popup styling */
+			.custom-popup .leaflet-popup-content-wrapper {
+				background: white;
+				border-radius: 8px;
+				box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+			}
+			.custom-popup .leaflet-popup-content {
+				margin: 15px;
+				font-family: inherit;
+			}
+			.custom-popup h3 {
+				margin: 0 0 10px 0;
+				font-size: 16px;
+				font-weight: bold;
+				color: #333;
+			}
+			.custom-popup .read-more-btn {
+				display: inline-block;
+				padding: 8px 16px;
+				background: #e74c3c;
+				color: white;
+				text-decoration: none;
+				border-radius: 4px;
+				font-size: 14px;
+				margin-top: 5px;
+				transition: background 0.3s;
+			}
+			.custom-popup .read-more-btn:hover {
+				background: #c0392b;
+			}
+			/* Cluster marker styling */
+			.cluster-marker {
+				background: #e74c3c;
+				border: 3px solid white;
+				border-radius: 50%;
+				color: white;
+				font-weight: bold;
+				font-size: 16px;
+				text-align: center;
+				line-height: 40px;
+				width: 40px;
+				height: 40px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			}
+			/* Custom red marker styling */
+			.custom-red-marker {
+				background: none;
+				border: none;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -247,7 +296,8 @@
 					center: [76, -42],
 					zoom: 3,
 					minZoom: 2,
-					maxZoom: 18
+					maxZoom: 18,
+					zoomControl: true
 				});
 
 				// Base layers
@@ -263,6 +313,11 @@
 
 				// Add default layer
 				streetLayer.addTo(map);
+
+				// Wait for map to be ready
+				map.whenReady(function() {
+					console.log('Map is ready, zoom level:', map.getZoom());
+				});
 
 				// Layer switching
 				var currentLayer = 'street';
@@ -284,6 +339,214 @@
 						currentLayer = 'satellite';
 						this.classList.add('active');
 						document.getElementById('street-view').classList.remove('active');
+					}
+				});
+
+				// Custom red pin icon using SVG (no external images needed)
+				var redIcon = L.divIcon({
+					className: 'custom-red-marker',
+					html: '<svg width="25" height="41" viewBox="0 0 25 41" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6 0 0 5.6 0 12.5c0 8.4 12.5 28.5 12.5 28.5S25 20.9 25 12.5C25 5.6 19.4 0 12.5 0z" fill="#e74c3c"/><circle cx="12.5" cy="12.5" r="5" fill="white"/></svg>',
+					iconSize: [25, 41],
+					iconAnchor: [12, 41],
+					popupAnchor: [1, -34]
+				});
+
+				// Define landslide locations
+				var landslides = [
+					{
+						name: "Karrat Fjord (2017)",
+						lat: 71.6426,
+						lng: -52.2661,
+						caseStudyId: "karrat-2017",
+						clustered: false
+					},
+					{
+						name: "Niiortuut (1952)",
+						lat: 70.3490,
+						lng: -53.1780,
+						caseStudyId: "niiortuut-1952",
+						clustered: true
+					},
+					{
+						name: "Paatuut (1996, 2000)",
+						lat: 70.2667,
+						lng: -52.7500,
+						caseStudyId: "paatuut-1996-2000",
+						clustered: true
+					},
+					{
+						name: "Assapaat (2021)",
+						lat: 70.3191,
+						lng: -52.9967,
+						caseStudyId: "assapaat-2021",
+						clustered: true
+					},
+					{
+						name: "Dickson Fjord (2023)",
+						lat: 72.8108,
+						lng: -26.9681,
+						caseStudyId: "dickson-2023",
+						clustered: false
+					}
+				];
+
+				// Custom red icon
+				var redIcon = L.icon({
+					iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+					shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+					iconSize: [25, 41],
+					iconAnchor: [12, 41],
+					popupAnchor: [1, -34],
+					shadowSize: [41, 41]
+				});
+
+				// Clustered sites (west coast group)
+				var westCoastSites = ["Niiortuut (1952)", "Paatuut (1996, 2000)", "Assapaat (2021)"];
+				var westCoastCenter = [70.31, -52.97];
+
+				var currentLockedMarker = null;  // Track which marker is currently locked
+				var individualMarkers = [];  // Store individual markers
+				var clusterMarker = null;  // Store cluster marker
+
+				// Create cluster marker icon
+				var clusterIcon = L.divIcon({
+					className: 'cluster-marker',
+					html: '3',
+					iconSize: [40, 40],
+					iconAnchor: [20, 20],
+					popupAnchor: [0, -20]
+				});
+
+				// Create cluster marker for zoomed out view
+				clusterMarker = L.marker(westCoastCenter, {icon: clusterIcon});
+				
+				var clusterPopupContent = '<div class="custom-popup"><h3>3 Landslide Sites</h3></div>';
+				
+				clusterMarker.bindPopup(clusterPopupContent, {
+					className: 'custom-popup',
+					autoClose: false,
+					closeOnClick: false
+				});
+
+				clusterMarker.isLocked = false;
+
+				clusterMarker.on('mouseover', function() {
+					if (!this.isLocked) {
+						this.openPopup();
+					}
+				});
+
+				clusterMarker.on('mouseout', function() {
+					if (!this.isLocked) {
+						this.closePopup();
+					}
+				});
+
+				clusterMarker.on('click', function(e) {
+					// Zoom in to show individual markers
+					map.setView(westCoastCenter, 10, {animate: true});
+					L.DomEvent.stopPropagation(e);
+				});
+
+				// Add markers to map
+				landslides.forEach(function(site) {
+					var marker = L.marker([site.lat, site.lng], {icon: redIcon});
+					
+					var popupContent = '<div class="custom-popup"><h3>' + site.name + '</h3>' +
+						'<a href="case-studies.html#' + site.caseStudyId + '" class="read-more-btn">Read More</a></div>';
+					
+					marker.bindPopup(popupContent, {
+						className: 'custom-popup',
+						autoClose: false,
+						closeOnClick: false
+					});
+					
+					marker.isLocked = false;
+					marker.siteName = site.name;
+					
+					marker.on('mouseover', function() {
+						if (!this.isLocked) {
+							this.openPopup();
+						}
+					});
+					
+					marker.on('mouseout', function(e) {
+						if (!this.isLocked) {
+							this.closePopup();
+						}
+					});
+
+					marker.on('click', function(e) {
+						if (currentLockedMarker && currentLockedMarker !== this) {
+							currentLockedMarker.isLocked = false;
+							currentLockedMarker.closePopup();
+						}
+						
+						this.isLocked = true;
+						currentLockedMarker = this;
+						this.openPopup();
+						
+						L.DomEvent.stopPropagation(e);
+					});
+
+					// Store markers for show/hide based on zoom
+					if (site.clustered) {
+						individualMarkers.push(marker);
+					} else {
+						marker.addTo(map);  // Always show non-clustered markers
+					}
+				});
+
+				// Function to update marker visibility based on zoom
+				function updateMarkerVisibility() {
+					var currentZoom = map.getZoom();
+					console.log('Zoom level:', currentZoom);
+					
+					if (currentZoom < 9) {
+						// Zoomed out - show cluster, hide individuals
+						if (!map.hasLayer(clusterMarker)) {
+							clusterMarker.addTo(map);
+							console.log('Added cluster marker');
+						}
+						individualMarkers.forEach(function(m) {
+							if (map.hasLayer(m)) {
+								map.removeLayer(m);
+								console.log('Removed individual marker');
+							}
+						});
+					} else {
+						// Zoomed in - hide cluster, show individuals
+						if (map.hasLayer(clusterMarker)) {
+							map.removeLayer(clusterMarker);
+							console.log('Removed cluster marker');
+						}
+						individualMarkers.forEach(function(m) {
+							if (!map.hasLayer(m)) {
+								m.addTo(map);
+								console.log('Added individual marker');
+							}
+						});
+					}
+				}
+
+				// Initial setup - call after a short delay to ensure map is ready
+				setTimeout(function() {
+					updateMarkerVisibility();
+				}, 100);
+
+				// Update on zoom
+				map.on('zoomend', updateMarkerVisibility);
+
+				// Click anywhere on map to unlock all popups
+				map.on('click', function() {
+					if (currentLockedMarker) {
+						currentLockedMarker.isLocked = false;
+						currentLockedMarker.closePopup();
+						currentLockedMarker = null;
+					}
+					if (clusterMarker.isLocked) {
+						clusterMarker.isLocked = false;
+						clusterMarker.closePopup();
 					}
 				});
 			</script>
