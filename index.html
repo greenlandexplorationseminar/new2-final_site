@@ -113,10 +113,16 @@
 			}
 			#footer .split.contact > section {
 				flex: 1;
+				display: flex;
+				flex-direction: column;
 			}
 			/* Fix email and GitHub link overflow */
 			#footer .split.contact > section p {
 				word-break: break-all;
+				margin-top: 0.5em;
+			}
+			#footer .split.contact > section h3 {
+				margin-bottom: 0;
 			}
 			/* Make "Open-Source Website Code" single line */
 			#footer .split.contact > section:nth-child(2) h3 {
