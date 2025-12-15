@@ -99,6 +99,28 @@
 				background: none;
 				border: none;
 			}
+			/* Adjust footer split widths */
+			#footer .split.contact {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			#footer .split.contact > section:first-child {
+				flex: 0 0 65%;
+				max-width: 65%;
+			}
+			#footer .split.contact > section:nth-child(2),
+			#footer .split.contact > section:nth-child(3) {
+				flex: 0 0 17.5%;
+				max-width: 17.5%;
+			}
+			@media screen and (max-width: 980px) {
+				#footer .split.contact > section:first-child,
+				#footer .split.contact > section:nth-child(2),
+				#footer .split.contact > section:nth-child(3) {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -167,7 +189,7 @@
 									<header>
 										<h2><a href="case-studies.html">Case Studies</a></h2>
 									</header>
-									<a href="case-studies.html" class="image fit"><img src="images/dickson.jpeg" alt="" /></a>
+									<a href="case-studies.html" class="image fit"><img src="images/paatuut.jpg" alt="" /></a>
 									<p>Some background on several significant landslide events from around Greenland</p>
 									<ul class="actions special">
 										<li><a href="case-studies.html" class="button">Read More</a></li>
