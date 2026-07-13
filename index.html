@@ -42,6 +42,7 @@
 				cursor: pointer;
 				border-radius: 3px;
 				font-size: 14px;
+				font-family: inherit;
 			}
 			.layer-control button:hover {
 				background: #e0e0e0;
@@ -99,30 +100,33 @@
 				background: none;
 				border: none;
 			}
-			/* Language toggle */
+			/* Language toggle - matches map layer-control style */
 			.lang-toggle {
 				position: fixed !important;
 				top: 15px;
 				right: 20px;
 				z-index: 999999 !important;
-				display: inline-flex !important;
-				background: #2c2c2c;
+				display: flex !important;
+				background: white;
+				padding: 6px;
 				border-radius: 4px;
-				overflow: hidden;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+				box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 			}
 			.lang-toggle button {
-				background: none;
+				padding: 6px 14px;
+				margin: 0 2px;
 				border: none;
-				color: #ccc;
-				padding: 0.6em 1em;
+				background: #f4f4f4;
 				cursor: pointer;
-				font-size: 0.85em;
-				font-weight: bold;
-				letter-spacing: 0.05em;
+				border-radius: 3px;
+				font-size: 14px;
+				font-family: inherit;
+			}
+			.lang-toggle button:hover {
+				background: #e0e0e0;
 			}
 			.lang-toggle button.active {
-				background: #e74c3c;
+				background: #4a90e2;
 				color: white;
 			}
 			/* Language visibility */
@@ -158,17 +162,6 @@
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
-
 				<!-- Header -->
 					<header id="header">
 						<a href="index.html" class="logo">Landslide Research</a>
@@ -194,8 +187,8 @@
 						<!-- Interactive Map Section -->
 						<section id="map-section">
 							<header class="major" style="text-align: center;">
-								<h2>Greenland Landslides Explorer</h2>
-								<p>Interactive map of historic landslides, impacts, and ongoing monitoring across Greenland</p>
+								<h2><span class="lang-en">Greenland Landslides Explorer</span><span class="lang-kl">Kalaallit Nunaanni Sisimmasut Takusassiaat</span></h2>
+								<p><span class="lang-en">Interactive map of historic landslides, impacts, and ongoing monitoring across Greenland</span><span class="lang-kl">Kalaallit Nunaata sisimmasuisa itsarnisaanik, sunniutaanik nakkutigisaanillu takusassiaq sunnersuutiginnittoq</span></p>
 							</header>
 							<div id="map-container">
 								<div class="layer-control">
@@ -209,10 +202,10 @@
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
+									<div id="translation-disclaimer"><span class="lang-kl">Disclaimer: Greenlandic (Kalaallisut) translations on this site have been generated using online tools (Google Translate) and have not yet been reviewed by a fluent speaker. Some content may be inaccurate.</span></div>
 									<h2 style="font-size: 2em;"><span class="lang-en">Landslides in Greenland</span><span class="lang-kl">Sisimmasut Kalaallit Nunaanni</span></h2>
-									<div id="translation-disclaimer"><span class="lang-kl">Note: Greenlandic (Kalaallisut) translations on this site are machine-generated and have not yet been reviewed by a fluent speaker. Some content may be inaccurate. English text is the authoritative version.</span></div>
 									<p class="lang-en">The Greenland Ice Sheet is the second largest body of ice in the world, and is one of the largest contributors to sea level rise. As a result of climate change, air and water temperatures have increased over the past few decades, which has led to a net loss of ice mass in Greenland. This loss has been particularly significant in fjords, due to glacial ice coming in contact with warm ocean water. Melting of permafrost and degradation of glaciers weakens terrain and deforms slopes, which can result in loose mud and debris suddenly and rapidly sliding into the ocean, often causing tsunami sized waves to occur and potentially devastate communities. Since the mid-20th century, landslides of increasing magnitude have been documented, particularly in the Vaigat Strait/Nuussuaq/Disko Island region on the west coast of Greenland. This region is highly inhabited, and these natural disasters have been found to cause major damage to infrastructure and way of life for communities in this area.</p>
-									<p class="lang-kl">[Translation pending / unreviewed] Kalaallit Nunaata sikuannguata silarsuaani angissuseqarnerpaanit aappaa, imartaata qaqiartornerani annertuumik peqataasuuvoq. Silap pinngortitaata allanngornera pissutigalugu, anorlermut imermullu kissaaneqarnerit ukiuni qulikkuutaani amerlanertigut annikillinngortitsivoq sikummik Kalaallit Nunaanni. Taamaattoq kangerlunni pingaaruteqarnerpaamik takuneqarpoq, sikuit ilisimaneqartut immami kissartumik attaveqarnerat pissutigalugu. Permafrostip aaneranik sikuillu innaallagissaanerat nunap qaqortai sukkasuumik allanngortarpai, taamaalilluni marraq assaanngitsullu qajartuutaannartumik imarmut siaruarsinnaapput, ilaannikkut tsunaminngortitsisarlutik illoqarfinnut ajoquserpassuinngortitsisinnaallutik. 1900-kkut affaanniilli sisimasut annertusiartortut nalunaarsorneqarsimapput, pingaartumik Vaigat/Nuussuaq/Qeqertarsuaq eqqaani, Kalaallit Nunaata kitaani. Tamatuma illoqarfeqarfiginerujusaanera pissutigalugu, pisimasut taama assigisaat innaallagissatigut inuiaqatigiillu inuunertigut ajoqusiisimapput.</p>
+									<p class="lang-kl">Kalaallit Nunaata sikuannguata silarsuaani angissuseqarnerpaanit aappaa, imartaata qaqiartornerani annertuumik peqataasuuvoq. Silap pinngortitaata allanngornera pissutigalugu, anorlermut imermullu kissaaneqarnerit ukiuni qulikkuutaani amerlanertigut annikillinngortitsivoq sikummik Kalaallit Nunaanni. Taamaattoq kangerlunni pingaaruteqarnerpaamik takuneqarpoq, sikuit ilisimaneqartut immami kissartumik attaveqarnerat pissutigalugu. Permafrostip aaneranik sikuillu innaallagissaanerat nunap qaqortai sukkasuumik allanngortarpai, taamaalilluni marraq assaanngitsullu qajartuutaannartumik imarmut siaruarsinnaapput, ilaannikkut tsunaminngortitsisarlutik illoqarfinnut ajoquserpassuinngortitsisinnaallutik. 1900-kkut affaanniilli sisimasut annertusiartortut nalunaarsorneqarsimapput, pingaartumik Vaigat/Nuussuaq/Qeqertarsuaq eqqaani, Kalaallit Nunaata kitaani. Tamatuma illoqarfeqarfiginerujusaanera pissutigalugu, pisimasut taama assigisaat innaallagissatigut inuiaqatigiillu inuunertigut ajoqusiisimapput.</p>
 								</header>
 							</article>
 
@@ -220,42 +213,42 @@
 							<section class="posts">
 								<article>
 									<header>
-										<h2><a href="case-studies.html">Case Studies</a></h2>
+										<h2><a href="case-studies.html"><span class="lang-en">Case Studies</span><span class="lang-kl">Case Studies</span></a></h2>
 									</header>
 									<a href="case-studies.html" class="image fit"><img src="images/dickson.jpeg" alt="" /></a>
-									<p>Some background on several significant landslide events from around Greenland</p>
+									<p><span class="lang-en">Some background on several significant landslide events from around Greenland</span><span class="lang-kl">Kalaallit Nunaata sisimmasuisa pingaartut ilaanni paasissutissat</span></p>
 									<ul class="actions special">
-										<li><a href="case-studies.html" class="button">Read More</a></li>
+										<li><a href="case-studies.html" class="button"><span class="lang-en">Read More</span><span class="lang-kl">Read More</span></a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2><a href="landslide-science.html">Landslide Science</a></h2>
+										<h2><a href="landslide-science.html"><span class="lang-en">Landslide Science</span><span class="lang-kl">Landslide Science</span></a></h2>
 									</header>
 									<a href="landslide-science.html" class="image fit"><img src="images/molards.jpg" alt="" /></a>
-									<p>Understanding the geological processes and mechanisms behind landslide phenomena</p>
+									<p><span class="lang-en">Understanding the geological processes and mechanisms behind landslide phenomena</span><span class="lang-kl">Sisimmasut pillugit nunap pissutsiisa paasineqarnerat</span></p>
 									<ul class="actions special">
-										<li><a href="landslide-science.html" class="button">Read More</a></li>
+										<li><a href="landslide-science.html" class="button"><span class="lang-en">Read More</span><span class="lang-kl">Read More</span></a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2><a href="monitoring-systems.html">Monitoring Systems</a></h2>
+										<h2><a href="monitoring-systems.html"><span class="lang-en">Monitoring Systems</span><span class="lang-kl">Monitoring Systems</span></a></h2>
 									</header>
 									<a href="monitoring-systems.html" class="image fit"><img src="images/alarms_1.jpg" alt="" /></a>
-									<p>Background about technology used for landslide susceptibility detection and warning</p>
+									<p><span class="lang-en">Background about technology used for landslide susceptibility detection and warning</span><span class="lang-kl">Sisimmasunik nakkutigisassanik atortunik paasissutissat</span></p>
 									<ul class="actions special">
-										<li><a href="monitoring-systems.html" class="button">Read More</a></li>
+										<li><a href="monitoring-systems.html" class="button"><span class="lang-en">Read More</span><span class="lang-kl">Read More</span></a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2><a href="ongoing-efforts.html">Ongoing Efforts</a></h2>
+										<h2><a href="ongoing-efforts.html"><span class="lang-en">Ongoing Efforts</span><span class="lang-kl">Ongoing Efforts</span></a></h2>
 									</header>
 									<a href="ongoing-efforts.html" class="image fit"><img src="images/ongoing_3.jpg" alt="" /></a>
-									<p>Current research projects and collaborative initiatives advancing the understanding of landslide risks in Greenland</p>
+									<p><span class="lang-en">Current research projects and collaborative initiatives advancing the understanding of landslide risks in Greenland</span><span class="lang-kl">Misissuinerit maanna ingerlanneqartut Kalaallit Nunaanni sisimmasunik navianartorsiornermik paasisimasanik ineriartortitsisut</span></p>
 									<ul class="actions special">
-										<li><a href="ongoing-efforts.html" class="button">Read More</a></li>
+										<li><a href="ongoing-efforts.html" class="button"><span class="lang-en">Read More</span><span class="lang-kl">Read More</span></a></li>
 									</ul>
 								</article>
 							</section>
