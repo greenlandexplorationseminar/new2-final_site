@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Landslides in Greenland</title>
+		<title>Landslide Research Hub</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -99,54 +99,49 @@
 				background: none;
 				border: none;
 			}
-			/* Adjust footer layout - make form wider */
-			#footer > section:first-child {
-				flex: 0 0 50%;
-				max-width: 50%;
+			/* Language toggle */
+			.lang-toggle {
+				position: relative;
+				display: inline-flex;
+				background: #2c2c2c;
+				border-radius: 4px;
+				overflow: hidden;
+				margin-left: 1em;
+				vertical-align: middle;
 			}
-			#footer .split.contact {
-				flex: 0 0 50%;
-				max-width: 50%;
-				display: flex;
-				flex-wrap: nowrap;
-				gap: 2em;
+			.lang-toggle button {
+				background: none;
+				border: none;
+				color: #ccc;
+				padding: 0.5em 0.9em;
+				cursor: pointer;
+				font-size: 0.8em;
+				font-weight: bold;
+				letter-spacing: 0.05em;
 			}
-			#footer .split.contact > section {
-				flex: 1;
-				display: flex;
-				flex-direction: column;
+			.lang-toggle button.active {
+				background: #e74c3c;
+				color: white;
 			}
-			/* Fix email and GitHub link overflow */
-			#footer .split.contact > section p {
-				word-break: break-all;
-				margin-top: 0.5em;
-			}
-			#footer .split.contact > section h3 {
-				margin-bottom: 0;
-			}
-			/* Make "Open-Source Website Code" single line */
-			#footer .split.contact > section:nth-child(2) h3 {
-				white-space: nowrap;
+			/* Language visibility */
+			.lang-kl { display: none; }
+			body.show-kl .lang-en { display: none; }
+			body.show-kl .lang-kl { display: inline; }
+			body.show-kl .lang-kl-block { display: block; }
+			.lang-kl-block { display: none; }
+			/* Translation disclaimer */
+			#translation-disclaimer {
+				display: none;
+				background: #fff3cd;
+				color: #856404;
+				border: 1px solid #ffeeba;
+				padding: 0.8em 1em;
+				margin: 1em 0;
+				border-radius: 4px;
 				font-size: 0.9em;
 			}
-			/* Center border between Email and GitHub sections */
-			#footer .split.contact > section:first-child {
-				border-right: solid 1px rgba(255, 255, 255, 0.2);
-				padding-right: 2em;
-			}
-			@media screen and (max-width: 980px) {
-				#footer > section:first-child,
-				#footer .split.contact {
-					flex: 0 0 100%;
-					max-width: 100%;
-				}
-				#footer .split.contact {
-					flex-direction: column;
-				}
-				#footer .split.contact > section:first-child {
-					border-right: none;
-					padding-right: 0;
-				}
+			body.show-kl #translation-disclaimer {
+				display: block;
 			}
 		</style>
 	</head>
@@ -157,9 +152,9 @@
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>Landslides in<br />
-						Greenland</h1>
-						<p>A brief overview of history, science, and ongoing research efforts relating to landslides in Greenland</p>
+						<h1>Landslide Research<br />
+						Hub</h1>
+						<p>Advancing understanding and monitoring of landslide phenomena through cutting-edge research and technology.</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -205,8 +200,10 @@
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
-									<h2 style="font-size: 2em;">Landslides in Greenland</h2>
-									<p>The Greenland Ice Sheet is the second largest body of ice in the world, and is one of the largest contributors to sea level rise. As a result of climate change, air and water temperatures have increased over the past few decades, which has led to a net loss of ice mass in Greenland. This loss has been particularly significant in fjords, due to glacial ice coming in contact with warm ocean water. Melting of permafrost and degradation of glaciers weakens terrain and deforms slopes, which can result in loose mud and debris suddenly and rapidly sliding into the ocean, often causing tsunami sized waves to occur and potentially devastate communities. Since the mid-20th century, landslides of increasing magnitude have been documented, particularly in the Vaigat Strait/Nuussuaq/Disko Island region on the west coast of Greenland. This region is highly inhabited, and these natural disasters have been found to cause major damage to infrastructure and way of life for communities in this area.</p>
+									<h2 style="font-size: 2em;"><span class="lang-en">Landslides in Greenland</span><span class="lang-kl">Sisimmasut Kalaallit Nunaanni</span></h2>
+									<div id="translation-disclaimer"><span class="lang-en"></span><span class="lang-kl">Note: Greenlandic (Kalaallisut) translations on this site are machine-generated and have not yet been reviewed by a fluent speaker. Some content may be inaccurate. English text is the authoritative version.</span></div>
+									<p class="lang-en">The Greenland Ice Sheet is the second largest body of ice in the world, and is one of the largest contributors to sea level rise. As a result of climate change, air and water temperatures have increased over the past few decades, which has led to a net loss of ice mass in Greenland. This loss has been particularly significant in fjords, due to glacial ice coming in contact with warm ocean water. Melting of permafrost and degradation of glaciers weakens terrain and deforms slopes, which can result in loose mud and debris suddenly and rapidly sliding into the ocean, often causing tsunami sized waves to occur and potentially devastate communities. Since the mid-20th century, landslides of increasing magnitude have been documented, particularly in the Vaigat Strait/Nuussuaq/Disko Island region on the west coast of Greenland. This region is highly inhabited, and these natural disasters have been found to cause major damage to infrastructure and way of life for communities in this area.</p>
+									<p class="lang-kl">[Translation pending / unreviewed] Kalaallit Nunaata sikuannguata silarsuaani angissuseqarnerpaanit aappaa, imartaata qaqiartornerani annertuumik peqataasuuvoq. Silap pinngortitaata allanngornera pissutigalugu, anorlermut imermullu kissaaneqarnerit ukiuni qulikkuutaani amerlanertigut annikillinngortitsivoq sikummik Kalaallit Nunaanni. Taamaattoq kangerlunni pingaaruteqarnerpaamik takuneqarpoq, sikuit ilisimaneqartut immami kissartumik attaveqarnerat pissutigalugu. Permafrostip aaneranik sikuillu innaallagissaanerat nunap qaqortai sukkasuumik allanngortarpai, taamaalilluni marraq assaanngitsullu qajartuutaannartumik imarmut siaruarsinnaapput, ilaannikkut tsunaminngortitsisarlutik illoqarfinnut ajoquserpassuinngortitsisinnaallutik. 1900-kkut affaanniilli sisimasut annertusiartortut nalunaarsorneqarsimapput, pingaartumik Vaigat/Nuussuaq/Qeqertarsuaq eqqaani, Kalaallit Nunaata kitaani. Tamatuma illoqarfeqarfiginerujusaanera pissutigalugu, pisimasut taama assigisaat innaallagissatigut inuiaqatigiillu inuunertigut ajoqusiisimapput.</p>
 								</header>
 							</article>
 
@@ -216,7 +213,7 @@
 									<header>
 										<h2><a href="case-studies.html">Case Studies</a></h2>
 									</header>
-									<a href="case-studies.html" class="image fit"><img src="images/paatuut.jpg" alt="" /></a>
+									<a href="case-studies.html" class="image fit"><img src="images/dickson.jpeg" alt="" /></a>
 									<p>Some background on several significant landslide events from around Greenland</p>
 									<ul class="actions special">
 										<li><a href="case-studies.html" class="button">Read More</a></li>
@@ -286,7 +283,9 @@
 							</section>
 							<section>
 								<h3>Open-Source Website Code</h3>
-								<p><a href="https://github.com/greenlandexplorationseminar/new2-final_site" target="_blank">https://github.com/greenlandexplorationseminar/new2-final_site</a></p>
+								<ul class="icons alt">
+									<li><a href="https://github.com/greenlandexplorationseminar/new2-final_site" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
 							</section>
 						</section>
 					</footer>
@@ -571,6 +570,34 @@
 				});
 			</script>
 
+			<script>
+				// Language toggle logic
+				function setLang(lang) {
+					if (lang === 'kl') {
+						document.body.classList.add('show-kl');
+						document.getElementById('btn-kl').classList.add('active');
+						document.getElementById('btn-en').classList.remove('active');
+					} else {
+						document.body.classList.remove('show-kl');
+						document.getElementById('btn-en').classList.add('active');
+						document.getElementById('btn-kl').classList.remove('active');
+					}
+					try {
+						localStorage.setItem('siteLang', lang);
+					} catch (e) {}
+				}
+
+				// Restore saved language preference on page load
+				(function() {
+					var savedLang = null;
+					try {
+						savedLang = localStorage.getItem('siteLang');
+					} catch (e) {}
+					if (savedLang === 'kl') {
+						setLang('kl');
+					}
+				})();
+			</script>
+
 	</body>
 </html>
-
