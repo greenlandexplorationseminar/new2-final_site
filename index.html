@@ -6,10 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
+
 		<!-- Leaflet CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-		
+
 		<style>
 			#map-container {
 				width: 100%;
@@ -101,15 +101,15 @@
 			}
 			/* Language toggle */
 			.lang-toggle {
-				position: fixed;
+				position: fixed !important;
 				top: 15px;
 				right: 20px;
-				z-index: 999999;
-				display: inline-flex;
+				z-index: 999999 !important;
+				display: inline-flex !important;
 				background: #2c2c2c;
 				border-radius: 4px;
 				overflow: hidden;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+				box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 			}
 			.lang-toggle button {
 				background: none;
@@ -149,14 +149,21 @@
 	</head>
 	<body class="is-preload">
 
+		<!-- Language Toggle -->
+			<div class="lang-toggle" id="lang-toggle">
+				<button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+				<button id="btn-kl" onclick="setLang('kl')">KL</button>
+			</div>
+
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>Landslide Research<br />
-						Hub</h1>
-						<p>Advancing understanding and monitoring of landslide phenomena through cutting-edge research and technology.</p>
+						<h1>This is<br />
+						Massively</h1>
+						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -173,7 +180,7 @@
 							<li class="active"><a href="index.html">Home</a></li>
 							<li><a href="case-studies.html">Case Studies</a></li>
 							<li><a href="landslide-science.html">Landslide Science</a></li>
-							<li><a href="monitoring-systems.html">Monitoring/Alarm Systems</a></li>
+							<li><a href="monitoring-systems.html">Monitoring Systems</a></li>
 							<li><a href="ongoing-efforts.html">Ongoing Efforts</a></li>
 						</ul>
 						<ul class="icons">
@@ -203,7 +210,7 @@
 							<article class="post featured">
 								<header class="major">
 									<h2 style="font-size: 2em;"><span class="lang-en">Landslides in Greenland</span><span class="lang-kl">Sisimmasut Kalaallit Nunaanni</span></h2>
-									<div id="translation-disclaimer"><span class="lang-en"></span><span class="lang-kl">Note: Greenlandic (Kalaallisut) translations on this site are machine-generated and have not yet been reviewed by a fluent speaker. Some content may be inaccurate. English text is the authoritative version.</span></div>
+									<div id="translation-disclaimer"><span class="lang-kl">Note: Greenlandic (Kalaallisut) translations on this site are machine-generated and have not yet been reviewed by a fluent speaker. Some content may be inaccurate. English text is the authoritative version.</span></div>
 									<p class="lang-en">The Greenland Ice Sheet is the second largest body of ice in the world, and is one of the largest contributors to sea level rise. As a result of climate change, air and water temperatures have increased over the past few decades, which has led to a net loss of ice mass in Greenland. This loss has been particularly significant in fjords, due to glacial ice coming in contact with warm ocean water. Melting of permafrost and degradation of glaciers weakens terrain and deforms slopes, which can result in loose mud and debris suddenly and rapidly sliding into the ocean, often causing tsunami sized waves to occur and potentially devastate communities. Since the mid-20th century, landslides of increasing magnitude have been documented, particularly in the Vaigat Strait/Nuussuaq/Disko Island region on the west coast of Greenland. This region is highly inhabited, and these natural disasters have been found to cause major damage to infrastructure and way of life for communities in this area.</p>
 									<p class="lang-kl">[Translation pending / unreviewed] Kalaallit Nunaata sikuannguata silarsuaani angissuseqarnerpaanit aappaa, imartaata qaqiartornerani annertuumik peqataasuuvoq. Silap pinngortitaata allanngornera pissutigalugu, anorlermut imermullu kissaaneqarnerit ukiuni qulikkuutaani amerlanertigut annikillinngortitsivoq sikummik Kalaallit Nunaanni. Taamaattoq kangerlunni pingaaruteqarnerpaamik takuneqarpoq, sikuit ilisimaneqartut immami kissartumik attaveqarnerat pissutigalugu. Permafrostip aaneranik sikuillu innaallagissaanerat nunap qaqortai sukkasuumik allanngortarpai, taamaalilluni marraq assaanngitsullu qajartuutaannartumik imarmut siaruarsinnaapput, ilaannikkut tsunaminngortitsisarlutik illoqarfinnut ajoquserpassuinngortitsisinnaallutik. 1900-kkut affaanniilli sisimasut annertusiartortut nalunaarsorneqarsimapput, pingaartumik Vaigat/Nuussuaq/Qeqertarsuaq eqqaani, Kalaallit Nunaata kitaani. Tamatuma illoqarfeqarfiginerujusaanera pissutigalugu, pisimasut taama assigisaat innaallagissatigut inuiaqatigiillu inuunertigut ajoqusiisimapput.</p>
 								</header>
@@ -310,7 +317,36 @@
 
 			<!-- Leaflet JS -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-			
+
+			<script>
+				// Language toggle logic
+				function setLang(lang) {
+					if (lang === 'kl') {
+						document.body.classList.add('show-kl');
+						document.getElementById('btn-kl').classList.add('active');
+						document.getElementById('btn-en').classList.remove('active');
+					} else {
+						document.body.classList.remove('show-kl');
+						document.getElementById('btn-en').classList.add('active');
+						document.getElementById('btn-kl').classList.remove('active');
+					}
+					try {
+						localStorage.setItem('siteLang', lang);
+					} catch (e) {}
+				}
+
+				// Restore saved language preference on page load
+				(function() {
+					var savedLang = null;
+					try {
+						savedLang = localStorage.getItem('siteLang');
+					} catch (e) {}
+					if (savedLang === 'kl') {
+						setLang('kl');
+					}
+				})();
+			</script>
+
 			<script>
 				// Initialize map centered on Greenland with EPSG:3857 (Web Mercator)
 				var map = L.map('map', {
@@ -335,14 +371,9 @@
 				// Add default layer
 				streetLayer.addTo(map);
 
-				// Wait for map to be ready
-				map.whenReady(function() {
-					console.log('Map is ready, zoom level:', map.getZoom());
-				});
-
 				// Layer switching
 				var currentLayer = 'street';
-				
+
 				document.getElementById('street-view').addEventListener('click', function() {
 					if (currentLayer !== 'street') {
 						map.removeLayer(satelliteLayer);
@@ -411,23 +442,13 @@
 					}
 				];
 
-				// Custom red icon
-				var redIcon = L.icon({
-					iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-					shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-					iconSize: [25, 41],
-					iconAnchor: [12, 41],
-					popupAnchor: [1, -34],
-					shadowSize: [41, 41]
-				});
-
 				// Clustered sites (west coast group)
 				var westCoastSites = ["Niiortuut (1952)", "Paatuut (1996, 2000)", "Assapaat (2021)"];
 				var westCoastCenter = [70.31, -52.97];
 
-				var currentLockedMarker = null;  // Track which marker is currently locked
-				var individualMarkers = [];  // Store individual markers
-				var clusterMarker = null;  // Store cluster marker
+				var currentLockedMarker = null;
+				var individualMarkers = [];
+				var clusterMarker = null;
 
 				// Create cluster marker icon
 				var clusterIcon = L.divIcon({
@@ -440,9 +461,9 @@
 
 				// Create cluster marker for zoomed out view
 				clusterMarker = L.marker(westCoastCenter, {icon: clusterIcon});
-				
+
 				var clusterPopupContent = '<div class="custom-popup"><h3>3 Landslide Sites</h3></div>';
-				
+
 				clusterMarker.bindPopup(clusterPopupContent, {
 					className: 'custom-popup',
 					autoClose: false,
@@ -464,7 +485,6 @@
 				});
 
 				clusterMarker.on('click', function(e) {
-					// Zoom in to show individual markers
 					map.setView(westCoastCenter, 10, {animate: true});
 					L.DomEvent.stopPropagation(e);
 				});
@@ -472,25 +492,25 @@
 				// Add markers to map
 				landslides.forEach(function(site) {
 					var marker = L.marker([site.lat, site.lng], {icon: redIcon});
-					
+
 					var popupContent = '<div class="custom-popup"><h3>' + site.name + '</h3>' +
 						'<a href="case-studies.html#' + site.caseStudyId + '" class="read-more-btn">Read More</a></div>';
-					
+
 					marker.bindPopup(popupContent, {
 						className: 'custom-popup',
 						autoClose: false,
 						closeOnClick: false
 					});
-					
+
 					marker.isLocked = false;
 					marker.siteName = site.name;
-					
+
 					marker.on('mouseover', function() {
 						if (!this.isLocked) {
 							this.openPopup();
 						}
 					});
-					
+
 					marker.on('mouseout', function(e) {
 						if (!this.isLocked) {
 							this.closePopup();
@@ -502,60 +522,50 @@
 							currentLockedMarker.isLocked = false;
 							currentLockedMarker.closePopup();
 						}
-						
+
 						this.isLocked = true;
 						currentLockedMarker = this;
 						this.openPopup();
-						
+
 						L.DomEvent.stopPropagation(e);
 					});
 
-					// Store markers for show/hide based on zoom
 					if (site.clustered) {
 						individualMarkers.push(marker);
 					} else {
-						marker.addTo(map);  // Always show non-clustered markers
+						marker.addTo(map);
 					}
 				});
 
 				// Function to update marker visibility based on zoom
 				function updateMarkerVisibility() {
 					var currentZoom = map.getZoom();
-					console.log('Zoom level:', currentZoom);
-					
+
 					if (currentZoom < 9) {
-						// Zoomed out - show cluster, hide individuals
 						if (!map.hasLayer(clusterMarker)) {
 							clusterMarker.addTo(map);
-							console.log('Added cluster marker');
 						}
 						individualMarkers.forEach(function(m) {
 							if (map.hasLayer(m)) {
 								map.removeLayer(m);
-								console.log('Removed individual marker');
 							}
 						});
 					} else {
-						// Zoomed in - hide cluster, show individuals
 						if (map.hasLayer(clusterMarker)) {
 							map.removeLayer(clusterMarker);
-							console.log('Removed cluster marker');
 						}
 						individualMarkers.forEach(function(m) {
 							if (!map.hasLayer(m)) {
 								m.addTo(map);
-								console.log('Added individual marker');
 							}
 						});
 					}
 				}
 
-				// Initial setup - call after a short delay to ensure map is ready
 				setTimeout(function() {
 					updateMarkerVisibility();
 				}, 100);
 
-				// Update on zoom
 				map.on('zoomend', updateMarkerVisibility);
 
 				// Click anywhere on map to unlock all popups
@@ -570,35 +580,6 @@
 						clusterMarker.closePopup();
 					}
 				});
-			</script>
-
-			<script>
-				// Language toggle logic
-				function setLang(lang) {
-					if (lang === 'kl') {
-						document.body.classList.add('show-kl');
-						document.getElementById('btn-kl').classList.add('active');
-						document.getElementById('btn-en').classList.remove('active');
-					} else {
-						document.body.classList.remove('show-kl');
-						document.getElementById('btn-en').classList.add('active');
-						document.getElementById('btn-kl').classList.remove('active');
-					}
-					try {
-						localStorage.setItem('siteLang', lang);
-					} catch (e) {}
-				}
-
-				// Restore saved language preference on page load
-				(function() {
-					var savedLang = null;
-					try {
-						savedLang = localStorage.getItem('siteLang');
-					} catch (e) {}
-					if (savedLang === 'kl') {
-						setLang('kl');
-					}
-				})();
 			</script>
 
 	</body>
