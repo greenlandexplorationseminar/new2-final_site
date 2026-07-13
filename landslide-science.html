@@ -25,26 +25,126 @@
 				color: #3498db !important;
 				border-bottom-color: #3498db;
 			}
+			/* Language toggle - matches map layer-control style */
+			.lang-toggle {
+				position: fixed !important;
+				top: 15px;
+				right: 20px;
+				z-index: 999999 !important;
+				display: flex !important;
+				background: white;
+				padding: 6px;
+				border-radius: 4px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			}
+			.lang-toggle button {
+				padding: 6px 14px;
+				margin: 0 2px;
+				border: none;
+				background: #f4f4f4;
+				cursor: pointer;
+				border-radius: 3px;
+				font-size: 14px;
+				font-family: inherit;
+			}
+			.lang-toggle button:hover {
+				background: #e0e0e0;
+			}
+			.lang-toggle button.active {
+				background: #4a90e2;
+				color: white;
+			}
+			/* Language visibility */
+			.lang-kl { display: none; }
+			body.show-kl .lang-en { display: none; }
+			body.show-kl .lang-kl { display: inline; }
+			body.show-kl .lang-kl-block { display: block; }
+			.lang-kl-block { display: none; }
+			/* Translation disclaimer */
+			#translation-disclaimer {
+				display: none;
+				background: #fff3cd;
+				color: #856404;
+				border: 1px solid #ffeeba;
+				padding: 0.8em 1em;
+				margin: 0.5em 0 1em 0;
+				border-radius: 4px;
+				font-size: 0.9em;
+			}
+			body.show-kl #translation-disclaimer {
+				display: block;
+			}
+			/* Untranslated text flag */
+			.untranslated-flag {
+				display: none;
+				font-weight: bold;
+				color: #856404;
+				margin-bottom: 0.5em;
+				font-size: 0.9em;
+			}
+			body.show-kl .untranslated-flag {
+				display: block;
+			}
+			/* Pull nav to top, equal spacing to match lang toggle */
+			#nav {
+				margin-top: 20px !important;
+				padding-left: 20px;
+				padding-right: 20px;
+				display: flex !important;
+				align-items: center;
+				justify-content: space-between;
+				height: auto !important;
+				min-height: auto !important;
+				overflow: hidden;
+			}
+			#nav:before,
+			#nav:after {
+				display: none !important;
+				content: none !important;
+			}
+			#nav ul.links {
+				margin-left: 0 !important;
+				padding-left: 0 !important;
+			}
+			#nav ul.icons {
+				margin-right: 110px !important;
+			}
+			#nav ul.links li,
+			#nav ul.links li a {
+				transform: none !important;
+				-webkit-transform: none !important;
+				clip-path: none !important;
+				margin-left: 0 !important;
+				white-space: nowrap;
+			}
+			#nav ul.links li:first-child a {
+				border-left: none !important;
+				padding-left: 20px !important;
+			}
+			body.show-kl #nav ul.links li a {
+				font-size: 0.7em;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
 
+		<!-- Language Toggle -->
+			<div class="lang-toggle" id="lang-toggle">
+				<button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+				<button id="btn-kl" onclick="setLang('kl')">KL</button>
+			</div>
+
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Landslide Research</a>
-					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="case-studies.html">Case Studies</a></li>
-							<li class="active"><a href="landslide-science.html">Landslide Science</a></li>
-							<li><a href="monitoring-systems.html">Monitoring/Alarm Systems</a></li>
-							<li><a href="ongoing-efforts.html">Ongoing Efforts</a></li>
+							<li><a href="index.html"><span class="lang-en">Home</span><span class="lang-kl">Aallaqqaataa</span></a></li>
+							<li><a href="case-studies.html"><span class="lang-en">Case Studies</span><span class="lang-kl">Misissuinerit</span></a></li>
+							<li class="active"><a href="landslide-science.html"><span class="lang-en">Landslide Science</span><span class="lang-kl">Sisimmasut Ilisimatusarnerat</span></a></li>
+							<li><a href="monitoring-systems.html"><span class="lang-en">Monitoring/Alarm Systems</span><span class="lang-kl">Nakkutigisassat</span></a></li>
+							<li><a href="ongoing-efforts.html"><span class="lang-en">Ongoing Efforts</span><span class="lang-kl">Suliniutit Ingerlanneqartut</span></a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/greenlandexplorationseminar/new2-final_site" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
@@ -57,18 +157,21 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Landslide Science</h1>
-									<p>Understanding the geological processes and mechanisms behind landslide phenomena</p>
+									<div id="translation-disclaimer"><span class="lang-kl">Disclaimer: Greenlandic (Kalaallisut) translations on this site have been generated using online tools (Google Translate) have not yet been reviewed by a fluent speaker. Some content may be inaccurate.</span></div>
+									<h1><span class="lang-en">Landslide Science</span><span class="lang-kl">Sisimmasut Ilisimatusarnerat</span></h1>
+									<p><span class="lang-en">Understanding the geological processes and mechanisms behind landslide phenomena</span><span class="lang-kl">Sisimmasut pillugit nunap pissutsiisa paasineqarnerat</span></p>
 								</header>
 
 								<!-- Tsunami Section -->
 								<section id="tsunami">
 									<h2>Tsunamis</h2>
-									
+
+									<p class="untranslated-flag">[Untranslated Text]</p>
+
 									<p>Landslides, by themselves, normally just impact the area immediately around where the event occurs. However, landslides that end up in bodies of water frequently create tsunamis. Tsunamis can travel further than landslides, and have the potential to cause major destruction of property or even loss of life. They also travel quickly. It can be a matter of minutes between when a landslide hits the water and when a nearby village sees huge waves.</p>
-									
+
 									<p>The size of tsunamis depends on the speed and energy the material from the landslide has when entering the water. This can depend on a number of factors. The steepness of a slope, resistance to movement provided to the ground, and mass of moving materials all impact how big a resulting tsunami will be.</p>
-									
+
 									<div style="text-align: center; margin: 2em 0;">
 										<video controls style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
 											<source src="images/subaerial.mp4" type="video/mp4">
@@ -76,7 +179,7 @@
 										</video>
 										<p style="text-align: center; font-size: 0.9em; margin-top: 0.5em;">Animation of a tsunami generated by a subaerial landslide <sup>[1]</sup></p>
 									</div>
-									
+
 									<h3>References</h3>
 									<ol style="font-size: 0.9em; line-height: 1.6;">
 										<li>National Oceanic and Atmospheric Administration. "Tsunami Generation from Landslides." <em>NOAA Jetstream</em>. <a href="https://www.noaa.gov/jetstream/tsunamis/tsunami-generation-landslides" target="_blank">https://www.noaa.gov/jetstream/tsunamis/tsunami-generation-landslides</a></li>
@@ -89,16 +192,18 @@
 								<!-- Dip-Slope Failure Section -->
 								<section id="dip-slope-failure">
 									<h2>Dip-Slope Failures</h2>
-									
+
+									<p class="untranslated-flag">[Untranslated Text]</p>
+
 									<p>A dip-slope is a landform that consists of layers of rock (strata) that lie parallel to the direction of the slope. They form as a result of erosion among rock layers with differing erosion resistance, and they are prone to landslides given the angle of the underlying rock. Dip slope failure occurs when a block of rock detaches from the mountain and slides down a weaker layer of rock, resulting in a potentially catastrophic landslide, as the sliding rock often takes the form of a very large sheet. The 2017 series of <a href="case-studies.html#karrat-2017">landslides in the Karrat Fjord region</a> is theorized to be a result of dip slope failure.</p>
-									
+
 									<p>Dip slopes can be identified by comparing the angle of the slope to that of the underlying rock; if the angles differ by less than 20 degrees, it is a dip slope. Since these landforms are prone to instability, the movement of rock material on these slopes should be monitored in order to determine whether they pose a hazard.</p>
-									
+
 									<div style="text-align: center; margin: 2em auto;">
 										<img src="images/dipslope.png" alt="Diagram highlighting the unique morphology of a dip-slope" style="width: 40%; height: auto; display: block; margin: 0 auto;" />
 										<p style="text-align: center; font-size: 0.9em; margin-top: 0.5em;">Diagram highlighting the unique morphology of a dip-slope <sup>[2]</sup></p>
 									</div>
-									
+
 									<h3>References</h3>
 									<ol style="font-size: 0.9em; line-height: 1.6;">
 										<li>Svennevig, K., Hicks, S. P., Forbriger, T., Lecocq, T., Widmer-Schnidrig, R., Mangeney, A., Hibert, C., Korsgaard, N. J., Lucas, A., Satriano, C., Thibaut, M., and Schippkus, S. "A rockslide-generated tsunami in a Greenland fjord rang Earth for 9 days." <em>Science</em>, 385, 1196–1205 (2024). <a href="https://www.sciencedirect.com/science/article/pii/S0013795219306544" target="_blank">https://www.sciencedirect.com/science/article/pii/S0013795219306544</a></li>
@@ -111,16 +216,18 @@
 								<!-- Molard Section -->
 								<section id="molard">
 									<h2>Molards</h2>
-									
+
+									<p class="untranslated-flag">[Untranslated Text]</p>
+
 									<p>During landslides over land including permafrost, sometimes chunks of permafrost will break off and move. These chunks contain debris and sediments glued together by ice. They can act like boulders, rolling downhill with the other material in the landslide. Sometimes, these boulder-like chunks stop on the slope they are moving down and get locked into place. Over time, as these blocks sit on the surface of a slope, the ice begins to melt. After the ice is gone, a cone-shaped pile of debris is left behind. These cones are called molards.</p>
-									
+
 									<p>Scientists are becoming more and more interested in finding and understanding molards. They can serve as important evidence for where permafrost-related landslides have occurred. Molards can also be dangerous. If another landslide occurs after the molards are formed, the moving rock can easily sweep up this loose debris and grow in size.</p>
-									
+
 									<div class="image main">
 										<img src="images/molards.jpg" alt="Diagram and photos of molards in Iceland" />
 										<p style="text-align: center; font-size: 0.9em; margin-top: 0.5em;">Diagram and photos of molards in Iceland <sup>[1]</sup></p>
 									</div>
-									
+
 									<h3>References</h3>
 									<ol style="font-size: 0.9em; line-height: 1.6;">
 										<li>International Permafrost Association. "Permolards project: Tracking the degradation of mountain permafrost with molards." <em>IPA</em>. <a href="https://lpg-umr6112.fr/en/permolards-project-tracking-the-degradation-of-mountain-permafrost-with-molards/" target="_blank">https://lpg-umr6112.fr/en/permolards-project-tracking-the-degradation-of-mountain-permafrost-with-molards/</a></li>
@@ -150,6 +257,35 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				// Language toggle logic
+				function setLang(lang) {
+					if (lang === 'kl') {
+						document.body.classList.add('show-kl');
+						document.getElementById('btn-kl').classList.add('active');
+						document.getElementById('btn-en').classList.remove('active');
+					} else {
+						document.body.classList.remove('show-kl');
+						document.getElementById('btn-en').classList.add('active');
+						document.getElementById('btn-kl').classList.remove('active');
+					}
+					try {
+						localStorage.setItem('siteLang', lang);
+					} catch (e) {}
+				}
+
+				// Restore saved language preference on page load
+				(function() {
+					var savedLang = null;
+					try {
+						savedLang = localStorage.getItem('siteLang');
+					} catch (e) {}
+					if (savedLang === 'kl') {
+						setLang('kl');
+					}
+				})();
+			</script>
 
 	</body>
 </html>
