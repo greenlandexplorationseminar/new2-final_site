@@ -25,26 +25,126 @@
 				color: #3498db !important;
 				border-bottom-color: #3498db;
 			}
+			/* Language toggle - matches map layer-control style */
+			.lang-toggle {
+				position: fixed !important;
+				top: 15px;
+				right: 20px;
+				z-index: 999999 !important;
+				display: flex !important;
+				background: white;
+				padding: 6px;
+				border-radius: 4px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			}
+			.lang-toggle button {
+				padding: 6px 14px;
+				margin: 0 2px;
+				border: none;
+				background: #f4f4f4;
+				cursor: pointer;
+				border-radius: 3px;
+				font-size: 14px;
+				font-family: inherit;
+			}
+			.lang-toggle button:hover {
+				background: #e0e0e0;
+			}
+			.lang-toggle button.active {
+				background: #4a90e2;
+				color: white;
+			}
+			/* Language visibility */
+			.lang-kl { display: none; }
+			body.show-kl .lang-en { display: none; }
+			body.show-kl .lang-kl { display: inline; }
+			body.show-kl .lang-kl-block { display: block; }
+			.lang-kl-block { display: none; }
+			/* Translation disclaimer */
+			#translation-disclaimer {
+				display: none;
+				background: #fff3cd;
+				color: #856404;
+				border: 1px solid #ffeeba;
+				padding: 0.8em 1em;
+				margin: 0.5em 0 1em 0;
+				border-radius: 4px;
+				font-size: 0.9em;
+			}
+			body.show-kl #translation-disclaimer {
+				display: block;
+			}
+			/* Untranslated text flag */
+			.untranslated-flag {
+				display: none;
+				font-weight: bold;
+				color: #856404;
+				margin-bottom: 0.5em;
+				font-size: 0.9em;
+			}
+			body.show-kl .untranslated-flag {
+				display: block;
+			}
+			/* Pull nav to top, equal spacing to match lang toggle */
+			#nav {
+				margin-top: 20px !important;
+				padding-left: 20px;
+				padding-right: 20px;
+				display: flex !important;
+				align-items: center;
+				justify-content: space-between;
+				height: auto !important;
+				min-height: auto !important;
+				overflow: hidden;
+			}
+			#nav:before,
+			#nav:after {
+				display: none !important;
+				content: none !important;
+			}
+			#nav ul.links {
+				margin-left: 0 !important;
+				padding-left: 0 !important;
+			}
+			#nav ul.icons {
+				margin-right: 110px !important;
+			}
+			#nav ul.links li,
+			#nav ul.links li a {
+				transform: none !important;
+				-webkit-transform: none !important;
+				clip-path: none !important;
+				margin-left: 0 !important;
+				white-space: nowrap;
+			}
+			#nav ul.links li:first-child a {
+				border-left: none !important;
+				padding-left: 20px !important;
+			}
+			body.show-kl #nav ul.links li a {
+				font-size: 0.7em;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
 
+		<!-- Language Toggle -->
+			<div class="lang-toggle" id="lang-toggle">
+				<button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+				<button id="btn-kl" onclick="setLang('kl')">KL</button>
+			</div>
+
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Landslide Research</a>
-					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="case-studies.html">Case Studies</a></li>
-							<li><a href="landslide-science.html">Landslide Science</a></li>
-							<li><a href="monitoring-systems.html">Monitoring/Alarm Systems</a></li>
-							<li class="active"><a href="ongoing-efforts.html">Ongoing Efforts</a></li>
+							<li><a href="index.html"><span class="lang-en">Home</span><span class="lang-kl">Aallaqqaataa</span></a></li>
+							<li><a href="case-studies.html"><span class="lang-en">Case Studies</span><span class="lang-kl">Misissuinerit</span></a></li>
+							<li><a href="landslide-science.html"><span class="lang-en">Landslide Science</span><span class="lang-kl">Sisimmasut Ilisimatusarnerat</span></a></li>
+							<li><a href="monitoring-systems.html"><span class="lang-en">Monitoring/Alarm Systems</span><span class="lang-kl">Nakkutigisassat</span></a></li>
+							<li class="active"><a href="ongoing-efforts.html"><span class="lang-en">Ongoing Efforts</span><span class="lang-kl">Suliniutit Ingerlanneqartut</span></a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/greenlandexplorationseminar/new2-final_site" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
@@ -57,9 +157,12 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Ongoing Efforts</h1>
-									<p>Current research projects and collaborative initiatives advancing the understanding of landslide risks in Greenland</p>
+									<div id="translation-disclaimer"><span class="lang-kl">Disclaimer: Greenlandic (Kalaallisut) translations on this site have been generated using online tools (Google Translate) have not yet been reviewed by a fluent speaker. Some content may be inaccurate.</span></div>
+									<h1><span class="lang-en">Ongoing Efforts</span><span class="lang-kl">Suliniutit Ingerlanneqartut</span></h1>
+									<p><span class="lang-en">Current research projects and collaborative initiatives advancing the understanding of landslide risks in Greenland</span><span class="lang-kl">Misissuinerit maanna ingerlanneqartut Kalaallit Nunaanni sisimmasunik navianartorsiornermik paasisimasanik ineriartortitsisut</span></p>
 								</header>
+
+								<p class="untranslated-flag">[Untranslated Text]</p>
 
 								<p>Although climate change is rapidly accelerating permafrost thaw and deglaciation, thus increasing the risk of landslides, there are not currently widespread landslide monitoring/screening and early warning systems in place throughout the country. However, there are a number of areas where work is currently being done to remedy this lack of data and understanding of landslides throughout Greenland.</p>
 
@@ -134,6 +237,35 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				// Language toggle logic
+				function setLang(lang) {
+					if (lang === 'kl') {
+						document.body.classList.add('show-kl');
+						document.getElementById('btn-kl').classList.add('active');
+						document.getElementById('btn-en').classList.remove('active');
+					} else {
+						document.body.classList.remove('show-kl');
+						document.getElementById('btn-en').classList.add('active');
+						document.getElementById('btn-kl').classList.remove('active');
+					}
+					try {
+						localStorage.setItem('siteLang', lang);
+					} catch (e) {}
+				}
+
+				// Restore saved language preference on page load
+				(function() {
+					var savedLang = null;
+					try {
+						savedLang = localStorage.getItem('siteLang');
+					} catch (e) {}
+					if (savedLang === 'kl') {
+						setLang('kl');
+					}
+				})();
+			</script>
 
 	</body>
 </html>
