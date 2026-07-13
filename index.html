@@ -157,6 +157,8 @@
 				display: flex !important;
 				align-items: center;
 				justify-content: space-between;
+				height: auto !important;
+				min-height: auto !important;
 			}
 			#nav:before,
 			#nav:after {
@@ -169,6 +171,25 @@
 			}
 			#nav ul.icons {
 				margin-right: 110px !important;
+			}
+			#nav ul.links li a {
+				white-space: nowrap;
+			}
+			/* Reduce excess spacing */
+			#map-section {
+				margin-bottom: 0 !important;
+			}
+			#map-section + article.post.featured {
+				margin-top: 0 !important;
+				padding-top: 1em !important;
+			}
+			#translation-disclaimer {
+				margin: 0.5em 0 1em 0 !important;
+			}
+			/* Prevent Greenlandic nav text from breaking layout */
+			body.show-kl #nav ul.links li a {
+				font-size: 0.7em;
+				white-space: nowrap;
 			}
 		</style>
 	</head>
